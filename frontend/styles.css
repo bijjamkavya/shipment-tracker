@@ -1,0 +1,250 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+#shipment-form,
+#filters,
+#shipment-list {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+#shipment-form input,
+#filters input,
+#shipment-form select,
+#filters select,
+#shipment-form button {
+  padding: 10px;
+  margin: 5px 5px 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#shipment-form button,
+.shipment-card button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#shipment-form button:hover,
+.shipment-card button:hover {
+  background-color: #2980b9;
+}
+
+.shipment-card {
+  background-color: #fafafa;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.status-in-transit {
+  color: #2980b9;
+  font-weight: bold;
+}
+
+.status-delivered {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+details {
+  margin-top: 10px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+details summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#filters label {
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+#filters input,
+#filters select {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  input,
+  select,
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #323232;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.success {
+  background-color: #27ae60;
+}
+
+.toast.error {
+  background-color: #c0392b;
+}
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  position: relative;
+  padding: 0 10px;
+}
+
+.progress-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.progress-step::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  height: 10px;
+  width: 100%;
+  background-color: #e0e0e0;
+  z-index: 0;
+  transform: translateX(-50%);
+}
+
+.progress-step span {
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 2px solid #ccc;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.progress-step.completed span {
+  background-color: #27ae60;
+  color: white;
+  border-color: #27ae60;
+}
+
+.progress-step.active span {
+  background-color: #3498db;
+  color: white;
+  border-color: #3498db;
+}
+/* 📦 Shipment Progress Timeline Styles */
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 10px 0;
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+}
+
+.progress-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.progress-step.completed {
+  color: green;
+}
+
+.progress-step.active {
+  color: #007bff;
+}
+
+.progress-step::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background-color: currentColor;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 5px;
+}
+
+.progress-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  z-index: -1;
+}
+
