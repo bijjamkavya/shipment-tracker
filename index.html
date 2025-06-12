@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shipment Tracker Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- ✅ Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <div id="toast" class="toast hidden"></div>
+  <div class="container">
+    <h1>📦 Shipment Tracker Dashboard</h1>
+
+    <!-- 👤 Role Toggle -->
+    <div style="text-align: right; margin-bottom: 20px;">
+      <label for="roleSelect"><strong>Role:</strong></label>
+      <select id="roleSelect" onchange="handleRoleChange()">
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+      </select>
+    </div>
+
+    <!-- ✅ Shipment Creation Form -->
+    <section id="shipment-form">
+      <h2>Create New Shipment</h2>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="shipmentId">Shipment ID</label>
+          <input id="shipmentId" placeholder="e.g., SHP1234" />
+        </div>
+        <div class="form-field">
+          <label for="containerId">Container ID</label>
+          <input id="containerId" placeholder="e.g., CNT4567" />
+        </div>
+        <div class="form-field">
+          <label for="currentLocation">Current Location</label>
+          <input id="currentLocation" placeholder="e.g., New York" />
+        </div>
+        <div class="form-field">
+          <label for="currentETA">ETA</label>
+          <input id="currentETA" type="datetime-local" />
+        </div>
+        <div class="form-field">
+          <label for="status">Status</label>
+          <select id="status">
+            <option>In Transit</option>
+            <option>Delivered</option>
+          </select>
+        </div>
+      </div>
+      <button onclick="createShipment()">➕ Create Shipment</button>
+    </section>
+
+    <!-- 🔍 Filter Section -->
+    <section id="filters">
+      <h3>🔍 Search & Filter</h3>
+
+      <input type="text" id="searchInput" placeholder="Search by Shipment ID" />
+      <select id="statusFilter">
+        <option value="">All</option>
+        <option value="In Transit">In Transit</option>
+        <option value="Delivered">Delivered</option>
+      </select>
+
+      <!-- ✅ Auto-Refresh Checkbox -->
+      <label>
+        <input type="checkbox" id="autoRefreshToggle" />
+        🔁 Auto Refresh Every 10s
+      </label>
+
+      <!-- ✅ Sorting Options -->
+      <label for="sortBy">Sort By:</label>
+      <select id="sortBy">
+        <option value="eta">ETA</option>
+        <option value="status">Status</option>
+        <option value="shipmentId">Shipment ID</option>
+        <option value="location">Location</option>
+      </select>
+
+      <!-- ⬇️ Export Buttons -->
+      <button onclick="downloadCSV()">⬇️ Export Shipments as CSV</button>
+      <button onclick="window.print()">🖨️ Print Summary View</button>
+    </section>
+
+    <!-- 📦 Shipment List + Pagination -->
+    <section id="shipment-list">
+      <h2>All Shipments</h2>
+      <p id="shipment-count" class="shipment-count-badge"></p>
+      <div id="shipments"></div>
+      <div id="pagination" class="pagination-controls"></div>
+    </section>
+  </div>
+
+  <!-- ✅ Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
