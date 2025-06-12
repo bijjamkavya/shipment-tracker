@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api/shipments';
+const API_BASE = 'https://shipment-tracker-enis.onrender.com/api/shipments';
 let allShipments = [];
 let currentPage = 1;
 const ITEMS_PER_PAGE = 5;
